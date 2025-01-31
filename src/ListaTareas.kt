@@ -62,7 +62,7 @@ class ListaTareas(val lista: MutableList<Tarea>) {
     }
 
 
-    fun cambiarEstado(){
+    fun cambiarEstado(): Boolean {
         //
 
         try {
@@ -77,13 +77,16 @@ class ListaTareas(val lista: MutableList<Tarea>) {
                     val fechaFormateada: String = fechaHoraActual.format(formatter)
                     tarea.fechaRealizacion = fechaFormateada
                     println("Tarea con id $id realizada a fecha y Hora Actual: $fechaFormateada")
+                    return true
                 }else{
                     println("No existe tarea con id $id")
+                    return false
                 }
             }
         }catch (e: IllegalArgumentException){
             println(e.message)
         }
+        return false
     }
 
     fun mostrarTareas() {
