@@ -1,6 +1,6 @@
 import java.util.*
 
-class Tarea(val idTarea: String, val descripcion: String, var estado: Estado) {
+class Tarea(val idTarea: String, val descripcion: String, var estado: Estado, var fechaRealizacion: String) {
 
 
     init{

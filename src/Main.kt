@@ -13,18 +13,26 @@ fun main() {
 //    println("Fecha y Hora Actual: $fechaFormateada")
 
     var finalizar = false
-    while (finalizar == false){
-        println("Ingresa opción: ")
-        val opcion = readln().toInt()
-        if (opcion == 1){
-            listaTareas.agregarTarea()
-            finalizar = true
-        }else{
-            println("ERROR")
+
+    do {
+        try {
+            println("Ingresa opción:\n1-> Agregar tarea.\n2-> Eliminar tarea.\n3-> Mostrar tareas pendientes.\n4-> Mostrar tareas realizadas.\n5-> Mostrar todas las tareas\n6-> Cambiar estado a REALIZADA.\n7-> SALIR.")
+            val opcion = readln().toInt()
+            when (opcion) {
+                1 -> listaTareas.agregarTarea()
+                2 -> listaTareas.eliminarTarea()
+                3 -> listaTareas.mostrarPendientes()
+                4 -> listaTareas.mostrarRealizadas()
+                5 -> listaTareas.mostrarTareas()
+                6 -> listaTareas.cambiarEstado()
+                7 -> {
+                    println("Hasta la próxima!")
+                    finalizar = true
+                }
+                else -> println("ERROR")
+            }
+        } catch (e: IllegalArgumentException){
+            println(e.message)
         }
-
-    }
-  listaTareas.mostrarTareas()
+    } while (!finalizar)
 }
-
-
